@@ -1,0 +1,20 @@
+<section class="categories-index">
+
+  <header class="page-header">
+   <h1>Admin &raquo; All Categories</h1>
+  </header>
+
+  <div class="categories ">
+  <%# can use render @categories also,shorter version %>
+        <% @category.each do |item|%>  
+        <div class="category" >  
+        <%= render 'item', category: item %>
+        </div>
+        <% end %>
+
+  </div>
+<div class="well">
+
+    <%= link_to '+ New Category', new_admin_category_path,class: 'btn btn-info' %>
+  </div>
+</section>

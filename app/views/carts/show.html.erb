@@ -3,7 +3,10 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-
+<% if enhanced_cart.blank?%>
+<%= render 'layouts/alert'%>
+<%= link_to 'Home', :root %>
+<% else %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -25,7 +28,7 @@
             TOTAL:
           </th>
           <th>
-            <%= cart_subtotal_cents / 100.0 %>
+            <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
           </th>
         </tr>
       </tfoot>
@@ -42,11 +45,11 @@
           data-name="Jungle"
           data-description="Khurram Virani's Jungle Order"
           data-locale="auto"
-          data-email="kvirani@gmail.com"
+          data-email=<%=current_user.email%>
           data-currency="cad">
         </script>
       <% end %>
     </div>
   </div>
-
+ <% end %>
 </section>
